@@ -8,16 +8,16 @@ namespace NfcReaderCloud.Controllers
     [ApiController]
     public class UserInfoController : ControllerBase
     {
-        private readonly ICheckDataService _checkService;
-        public UserInfoController(ICheckDataService checkService)
+        private readonly ICheckDataService _checkDataService;
+        public UserInfoController(ICheckDataService checkDataService)
         {
-            _checkService = checkService;
+            _checkDataService = checkDataService;
         }
 
         [HttpPost]
-        public IActionResult CheckUser(UserDTO user)
+        public IActionResult CheckUser(UserAuthDTO user)
         {
-            _checkService.Check(user);
+            _checkDataService.Check(user);
             return Ok();
         }
 

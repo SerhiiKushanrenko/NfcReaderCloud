@@ -15,17 +15,13 @@ namespace BLL.Services
             _guidDictionary = guidDictionary;
             _hub = hub;
         }
-        public void Check(UserDTO userDto)
+        public void Check(UserAuthDTO userDto)
         {
-            Task.Delay(1000).Wait();
             if (_guidDictionary.Keys.Contains(userDto.Id))
             {
                 _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).SendAsync("Notify", true);
                 return;
-                // _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).CheckHubAsync(true);
             }
-
-            // _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).CheckHubAsync(false);
             _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).SendAsync("Notify", false);
         }
     }

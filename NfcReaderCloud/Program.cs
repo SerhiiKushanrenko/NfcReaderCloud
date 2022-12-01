@@ -13,16 +13,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "testPolicy1", builder =>
+    options.AddDefaultPolicy(builder =>
     {
         builder.WithOrigins("http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
-
     });
 });
+
+builder.Services.AddSignalRCore();
 builder.Services.AddSignalR();
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,15 +37,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("testPolicy1");
+
 app.UseHttpsRedirection();
-app.UseRouting();
+app.UseCors();
+//app.UseRouting();
 
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-    endpoints.MapHub<CheckHub>("/CheckHub");
-});
+
+app.MapControllers();
+app.MapHub<CheckHub>("/checkHub");
+
 
 app.Run();

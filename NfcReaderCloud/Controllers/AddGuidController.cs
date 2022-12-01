@@ -15,7 +15,7 @@ namespace NfcReaderCloud.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddGuid([FromBody] WebPageDTO pageDto)
+        public async Task<IActionResult> AddGuid([FromBody] WebDataDTO pageDto)
         {
             await _addGuidService.AddGuidToList(pageDto);
             return Ok();

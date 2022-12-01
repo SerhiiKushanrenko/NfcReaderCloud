@@ -11,9 +11,9 @@ namespace BLL.Services
         {
             _guidDictionary = guidDictionary;
         }
-        public Task AddGuidToList(WebPageDTO pageDto)
+        public Task AddGuidToList(WebDataDTO pageDto)
         {
-            _guidDictionary.Add(pageDto.Id, pageDto.ConnectionId);
+            _guidDictionary.Add(Guid.Parse(pageDto.Id), pageDto.ConnectionId);
             return Task.CompletedTask;
         }
     }

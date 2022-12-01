@@ -1,8 +1,8 @@
 ﻿namespace BLL.DTOs
 {
-    public class WebPageDTO
+    public class WebDataDTO
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string ConnectionId { get; set; }
     }

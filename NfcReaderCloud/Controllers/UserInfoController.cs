@@ -6,10 +6,10 @@ namespace NfcReaderCloud.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserInfo : ControllerBase
+    public class UserInfoController : ControllerBase
     {
-        private readonly ICheckService _checkService;
-        public UserInfo(ICheckService checkService)
+        private readonly ICheckDataService _checkService;
+        public UserInfoController(ICheckDataService checkService)
         {
             _checkService = checkService;
         }
@@ -21,10 +21,5 @@ namespace NfcReaderCloud.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok();
-        }
     }
 }

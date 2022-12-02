@@ -42,10 +42,6 @@ app.UseHttpsRedirection();
 app.UseCors();
 //app.UseRouting();
 
-
-
 app.MapControllers();
 app.MapHub<CheckHub>("/checkHub");
-
-
 app.Run();

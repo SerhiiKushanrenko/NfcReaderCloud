@@ -13,7 +13,7 @@ namespace BLL.Services
         }
         public Task AddGuidToList(WebDataDTO pageDto)
         {
-            _guidDictionary.Add(Guid.Parse(pageDto.Id), pageDto.ConnectionId);
+            _guidDictionary.TryAdd(Guid.Parse(pageDto.Id), pageDto.ConnectionId);
             return Task.CompletedTask;
         }
     }

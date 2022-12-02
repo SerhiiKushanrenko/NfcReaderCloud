@@ -9,7 +9,7 @@ namespace BLL
     {
         public static void AddBusinessLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<Dictionary<Guid, string>>(opt => new Dictionary<Guid, string>());
+            services.AddSingleton(opt => new Dictionary<Guid, string>());
             services.AddScoped<IAddGuidService, AddGuidService>();
             services.AddScoped<ICheckDataService, CheckDataService>();
 

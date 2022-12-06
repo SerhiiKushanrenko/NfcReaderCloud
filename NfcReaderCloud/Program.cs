@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:3000")
+        builder.WithOrigins("https://master.d2anohmrwsie9p.amplifyapp.com")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();

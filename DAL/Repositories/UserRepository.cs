@@ -12,9 +12,9 @@ namespace DAL.Repositories
 
         }
 
-        public async Task<User> GetAsync(string deviceId)
+        public async Task<User> GetAsync(string usbDeviceId)
         {
-            return await GetAll().FirstOrDefaultAsync(user => user.DeviceId == deviceId);
+            return await GetAll().FirstOrDefaultAsync(user => user.UsbDeviceId == usbDeviceId);
         }
     }
 }

@@ -2,11 +2,12 @@
 {
     public class UserAuthDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public string DeviceId { get; set; }
+        public string UsbDeviceId { get; set; }
+        public Guid DeviceId { get; set; }
     }
 }
 

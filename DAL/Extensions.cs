@@ -11,7 +11,7 @@ namespace DAL
     {
         public static void AddDataLayer(this IServiceCollection services, IConfiguration configuration)
         {
-
+            var t = configuration.GetConnectionString("AwcDB");
             services.AddDbContext<NfcDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("AwcDB")));
 
             using (var serviceScope = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>().CreateScope())

@@ -16,6 +16,7 @@ namespace BLL
             services.AddScoped<IAddGuidService, AddGuidService>();
             services.AddScoped<ICheckDataService, CheckDataService>();
             services.AddScoped<IAppStatusService, AppStatusService>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

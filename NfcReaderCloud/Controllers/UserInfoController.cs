@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services.Interfaces;
+using DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NfcReaderCloud.Controllers
@@ -9,9 +10,11 @@ namespace NfcReaderCloud.Controllers
     public class UserInfoController : ControllerBase
     {
         private readonly ICheckDataService _checkDataService;
-        public UserInfoController(ICheckDataService checkDataService)
+        private readonly IUserService _userService;
+        public UserInfoController(ICheckDataService checkDataService, IUserService userService)
         {
             _checkDataService = checkDataService;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -19,6 +22,14 @@ namespace NfcReaderCloud.Controllers
         {
             _checkDataService.Check(user);
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("AddUser")]
+        public IActionResult AddUser(User user)
+        {
+            var result = _userService.CreateUser(user);
+            return Ok(result);
         }
 
     }

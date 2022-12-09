@@ -2,7 +2,7 @@
 
 namespace BLL.Services.Interfaces
 {
-    public interface ICheckDataService
+    public interface IAuthService
     {
         public Task Check(UserAuthDTO userDto);
     }

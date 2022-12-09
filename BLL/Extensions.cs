@@ -14,7 +14,7 @@ namespace BLL
 
             services.AddSingleton(opt => new Dictionary<Guid, string>());
             services.AddScoped<IAddGuidService, AddGuidService>();
-            services.AddScoped<ICheckDataService, CheckDataService>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAppStatusService, AppStatusService>();
             services.AddScoped<IUserService, UserService>();
         }

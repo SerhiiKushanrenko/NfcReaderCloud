@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace BLL.Services
 {
-    public class CheckDataService : ICheckDataService
+    public class AuthService : IAuthService
     {
         private readonly Dictionary<Guid, string> _guidDictionary;
         private readonly IHubContext<CheckHub> _hub;
         private readonly IUserRepository _userRepository;
 
-        public CheckDataService(Dictionary<Guid, string> guidDictionary, IHubContext<CheckHub> hub, IUserRepository userRepository)
+        public AuthService(Dictionary<Guid, string> guidDictionary, IHubContext<CheckHub> hub, IUserRepository userRepository)
         {
             _guidDictionary = guidDictionary;
             _hub = hub;
@@ -25,10 +25,10 @@ namespace BLL.Services
             {
                 if (_guidDictionary.Keys.Contains(userDto.DeviceId))
                 {
-                    _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", true, userDto.DeviceId);
+                    await _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", true, userDto.DeviceId);
                     return;
                 }
-                _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", false);
+                await _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", false);
             }
         }
     }

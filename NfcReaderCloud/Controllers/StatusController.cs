@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BLL.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NfcReaderCloud.Controllers
 {
@@ -6,10 +7,19 @@ namespace NfcReaderCloud.Controllers
     [ApiController]
     public class StatusController : ControllerBase
     {
+
+        private readonly IAppStatusService _appStatusService;
+
+        public StatusController(IAppStatusService appStatusService)
+        {
+            _appStatusService = appStatusService;
+        }
+
+
         [HttpGet]
         public IActionResult GetStatus()
         {
-            return Ok();
+            return Ok(_appStatusService.GetAppStatus());
         }
     }
 }

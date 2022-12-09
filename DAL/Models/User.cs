@@ -1,6 +1,6 @@
-﻿namespace BLL.DTOs
+﻿namespace DAL.Models
 {
-    public class UserAuthDTO
+    public class User
     {
         public Guid Id { get; set; }
 
@@ -9,4 +9,3 @@
         public string DeviceId { get; set; }
     }
 }
-

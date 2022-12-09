@@ -1,6 +1,7 @@
 ﻿using BLL.DTOs;
 using BLL.Hubs;
 using BLL.Services.Interfaces;
+using DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 
 namespace BLL.Services
@@ -9,20 +10,26 @@ namespace BLL.Services
     {
         private readonly Dictionary<Guid, string> _guidDictionary;
         private readonly IHubContext<CheckHub> _hub;
+        private readonly IUserRepository _userRepository;
 
-        public CheckDataService(Dictionary<Guid, string> guidDictionary, IHubContext<CheckHub> hub)
+        public CheckDataService(Dictionary<Guid, string> guidDictionary, IHubContext<CheckHub> hub, IUserRepository userRepository)
         {
             _guidDictionary = guidDictionary;
             _hub = hub;
+            _userRepository = userRepository;
         }
-        public void Check(UserAuthDTO userDto)
+        public async Task Check(UserAuthDTO userDto)
         {
-            if (_guidDictionary.Keys.Contains(userDto.Id))
+            var user = await _userRepository.GetAsync(userDto.DeviceId);
+            if (user != null)
             {
-                _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).SendAsync("Notify", true);
-                return;
+                if (_guidDictionary.Keys.Contains(userDto.Id))
+                {
+                    _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).SendAsync("Notify", true, userDto.DeviceId);
+                    return;
+                }
+                _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).SendAsync("Notify", false);
             }
-            _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.Id).Value).SendAsync("Notify", false);
         }
     }
 }

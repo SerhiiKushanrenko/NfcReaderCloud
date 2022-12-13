@@ -1,7 +1,6 @@
 ﻿using DAL.EF;
 using DAL.Models;
 using DAL.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
@@ -14,7 +13,8 @@ namespace DAL.Repositories
 
         public async Task<User> GetAsync(string usbDeviceId)
         {
-            return await GetAll().FirstOrDefaultAsync(user => user.UsbDeviceId == usbDeviceId);
+            var a = GetAll().ToList();
+            return a.FirstOrDefault(user => user.UsbDeviceId == usbDeviceId);
         }
     }
 }

@@ -21,15 +21,16 @@ namespace BLL.Services
         public async Task Check(UserAuthDTO userDto)
         {
             var user = await _userRepository.GetAsync(userDto.UsbDeviceId);
-            if (user != null)
+            if (user is not null)
             {
                 if (_guidDictionary.Keys.Contains(userDto.DeviceId))
                 {
-                    await _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", true, userDto.DeviceId);
+                    await _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", true, userDto.UsbDeviceId, userDto.Name);
                     return;
                 }
                 await _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", false);
             }
+            await _hub.Clients.Client(_guidDictionary.FirstOrDefault(e => e.Key == userDto.DeviceId).Value).SendAsync("Notify", false);
         }
     }
 }

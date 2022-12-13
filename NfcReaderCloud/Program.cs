@@ -15,7 +15,9 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("https://master.d2anohmrwsie9p.amplifyapp.com")
+        builder/*WithOrigins("http://localhost:3000")*/
+
+            .WithOrigins("https://master.d2anohmrwsie9p.amplifyapp.com")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -40,7 +42,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
-//app.UseRouting();
+app.UseRouting();
 
 app.MapControllers();
 app.MapHub<CheckHub>("/checkHub");

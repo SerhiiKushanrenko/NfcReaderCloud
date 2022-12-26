@@ -16,5 +16,6 @@ namespace DAL.Repositories
             var a = GetAll().ToList();
             return a.FirstOrDefault(user => user.UsbDeviceId == usbDeviceId);
         }
+
     }
 }

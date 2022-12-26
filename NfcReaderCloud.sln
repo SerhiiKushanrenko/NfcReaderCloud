@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NfcReaderCloud", "NfcReader
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{A05E2C40-85EB-4A35-959A-F64990BBF58D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{0E348F9C-C8F9-41BD-9BAD-03573F81AD51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{0E348F9C-C8F9-41BD-9BAD-03573F81AD51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{CAA91176-72F2-441C-9399-3FE794591049}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfcReaderCloud.UnitTests", "NfcReaderCloud.UnitTests\NfcReaderCloud.UnitTests.csproj", "{DFF05995-F8FB-4115-BE6C-B8EF459EE41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfcReaderCloud.IntegrationTests", "NfcReaderCloud.IntegrationTests\NfcReaderCloud.IntegrationTests.csproj", "{995BE4C6-4F38-494B-8E8B-CBE14B43334B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,21 @@ Global
 		{0E348F9C-C8F9-41BD-9BAD-03573F81AD51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E348F9C-C8F9-41BD-9BAD-03573F81AD51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E348F9C-C8F9-41BD-9BAD-03573F81AD51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF05995-F8FB-4115-BE6C-B8EF459EE41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF05995-F8FB-4115-BE6C-B8EF459EE41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF05995-F8FB-4115-BE6C-B8EF459EE41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF05995-F8FB-4115-BE6C-B8EF459EE41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{995BE4C6-4F38-494B-8E8B-CBE14B43334B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{995BE4C6-4F38-494B-8E8B-CBE14B43334B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{995BE4C6-4F38-494B-8E8B-CBE14B43334B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{995BE4C6-4F38-494B-8E8B-CBE14B43334B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DFF05995-F8FB-4115-BE6C-B8EF459EE41A} = {CAA91176-72F2-441C-9399-3FE794591049}
+		{995BE4C6-4F38-494B-8E8B-CBE14B43334B} = {CAA91176-72F2-441C-9399-3FE794591049}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8337E3AB-0D2E-42AF-8574-58B4493F38C0}

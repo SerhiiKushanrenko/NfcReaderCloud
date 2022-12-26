@@ -17,5 +17,11 @@ namespace BLL.Services
         {
             await _userRepository.CreateAsync(user);
         }
+
+        public async Task<int> GetAllUsers()
+        {
+            var result = _userRepository.GetAll().Count();
+            return result;
+        }
     }
 }

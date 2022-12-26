@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using BLL.Hubs.Interfaces;
+using Microsoft.AspNetCore.SignalR;
 
 namespace BLL.Hubs
 {
-    public class CheckHub : Hub
+    public class CheckHub : Hub<ICheckHub>
     {
 
     }
